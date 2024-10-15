@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function WeeklyWorkoutSplit() {
-  const weekSchedule = [
+export default function WorkoutSplit() {
+  const workoutDays = [
     {
       day: "Monday",
       focus: "Legs",
@@ -16,11 +16,6 @@ export default function WeeklyWorkoutSplit() {
     },
     {
       day: "Tuesday",
-      focus: "Rest Day",
-      exercises: ["Active recovery, stretching, or light cardio (optional)"]
-    },
-    {
-      day: "Wednesday",
       focus: "Chest and Shoulders",
       exercises: [
         "Bench Press: 4 sets x 8-10 reps",
@@ -33,11 +28,6 @@ export default function WeeklyWorkoutSplit() {
     },
     {
       day: "Thursday",
-      focus: "Rest Day",
-      exercises: ["Active recovery, stretching, or light cardio (optional)"]
-    },
-    {
-      day: "Friday",
       focus: "Back",
       exercises: [
         "Deadlifts: 4 sets x 6-8 reps",
@@ -49,7 +39,7 @@ export default function WeeklyWorkoutSplit() {
       ]
     },
     {
-      day: "Saturday",
+      day: "Friday",
       focus: "Arms",
       exercises: [
         "Barbell Curls: 3 sets x 8-10 reps",
@@ -59,29 +49,19 @@ export default function WeeklyWorkoutSplit() {
         "Preacher Curls: 3 sets x 12-15 reps",
         "Tricep Dips: 3 sets x 12-15 reps"
       ]
-    },
-    {
-      day: "Sunday",
-      focus: "Rest Day",
-      exercises: ["Full rest or light activity like walking or yoga"]
     }
   ]
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {weekSchedule.map((day, index) => (
-        <Card key={index} className={`w-full ${day.focus === "Rest Day" ? "bg-gray-100" : ""}`}>
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {workoutDays.map((workout, index) => (
+        <Card key={index} className="w-full">
           <CardHeader>
-            <CardTitle className="flex justify-between items-center">
-              <span>{day.day}</span>
-              <span className={`text-sm ${day.focus === "Rest Day" ? "text-gray-500" : "text-blue-500"}`}>
-                {day.focus}
-              </span>
-            </CardTitle>
+            <CardTitle>{workout.day}: {workout.focus}</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 space-y-2">
-              {day.exercises.map((exercise, exerciseIndex) => (
+              {workout.exercises.map((exercise, exerciseIndex) => (
                 <li key={exerciseIndex} className="text-sm">{exercise}</li>
               ))}
             </ul>
